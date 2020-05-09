@@ -24,7 +24,7 @@ public class GithubApiClient {
 
     private static Retrofit retrofit = null;
     private static int REQUEST_TIMEOUT = 60;
-    private static String BASE_URL = "https://api.github.com/";
+    private static String BASE_URL = "https://shibe.online/";
     private static OkHttpClient okHttpClient;
 
     public static Retrofit getClient(Context context) {

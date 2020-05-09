@@ -1,12 +1,16 @@
 package ru.nsu.dogsFetcher.presentation.repos.list;
 
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.Collections;
 import java.util.List;
@@ -15,25 +19,26 @@ import ru.nsu.dogsFetcher.R;
 import ru.nsu.dogsFetcher.data.model.Repo;
 
 public class ReposAdapter extends RecyclerView.Adapter<ReposAdapter.ViewHolder> {
-    private List<Repo> items = Collections.emptyList();
+    private List<String> items = Collections.emptyList();
 
-    public void setItems(List<Repo> items) {
+    public void setItems(List<String> items) {
         this.items = items;
         notifyDataSetChanged();
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        final Repo repo = items.get(position);
+        final String url = items.get(position);
 
-        holder.tvTitle.setText(repo.getName());
-        holder.tvLanguage.setText(repo.getLanguage());
+        Glide.with(holder.itemView.getContext())
+                .load(Uri.parse(url))
+                .into(holder.ivAvatar);
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_repo, parent, false));
+        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_user, parent, false));
     }
 
     @Override
@@ -42,14 +47,12 @@ public class ReposAdapter extends RecyclerView.Adapter<ReposAdapter.ViewHolder> 
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvTitle;
-        TextView tvLanguage;
+        ImageView ivAvatar;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            tvTitle = itemView.findViewById(R.id.tvTitle);
-            tvLanguage = itemView.findViewById(R.id.tvLanguage);
+            ivAvatar = itemView.findViewById(R.id.ivAvatar);
         }
     }
 }

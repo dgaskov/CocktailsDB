@@ -12,20 +12,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
+import java.util.Collections;
 import java.util.List;
 
 import ru.nsu.dogsFetcher.R;
 import ru.nsu.dogsFetcher.data.model.User;
 
 public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.ViewHolder> {
-    private List<User> items;
-    private OnUserClickListener listener;
+    private List<String> items = Collections.emptyList();
+    private OnShibeClickListener listener;
 
-    public UserListAdapter(OnUserClickListener listener) {
+    public UserListAdapter(OnShibeClickListener listener) {
         this.listener = listener;
     }
 
-    public void setItems(List<User> items) {
+    public void setItems(List<String> items) {
         this.items = items;
         notifyDataSetChanged();
     }
@@ -38,18 +39,17 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        final User user = items.get(position);
-        holder.tvLogin.setText(user.getLogin());
+        final String url = items.get(position);
 
         Glide.with(holder.itemView.getContext())
-                .load(Uri.parse(user.getAvatarUrl()))
+                .load(Uri.parse(url))
                 .into(holder.ivAvatar);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (listener != null) {
-                    listener.onUserClick(user);
+                    listener.onClick(url);
                 }
             }
         });
@@ -62,13 +62,11 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.ViewHo
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView ivAvatar;
-        TextView tvLogin;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             ivAvatar = itemView.findViewById(R.id.ivAvatar);
-            tvLogin = itemView.findViewById(R.id.tvLogin);
         }
     }
 }

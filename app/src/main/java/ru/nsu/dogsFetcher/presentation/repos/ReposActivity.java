@@ -48,24 +48,22 @@ public class ReposActivity extends AppCompatActivity {
 
         initList();
 
-        User user = (User)getIntent().getSerializableExtra(USER_KEY);
+        String url = (String)getIntent().getSerializableExtra(USER_KEY);
 
-        viewModel = ViewModelProviders.of(this, new ReposViewModelFactory(user)).get(ReposViewModel.class);
+        viewModel = ViewModelProviders.of(this, new ReposViewModelFactory(url)).get(ReposViewModel.class);
 
-        viewModel.observeUserLiveData().observe(this, new Observer<User>() {
+        viewModel.observeUserLiveData().observe(this, new Observer<String>() {
             @Override
-            public void onChanged(User user) {
+            public void onChanged(String user) {
                 Glide.with(context)
-                        .load(Uri.parse(user.getAvatarUrl()))
+                        .load(Uri.parse(user))
                         .into(ivAvatar);
-
-                tvLogin.setText(user.getLogin());
             }
         });
 
-        viewModel.observeReposLiveData().observe(this, new Observer<List<Repo>>() {
+        viewModel.observeShibesLiveData().observe(this, new Observer<List<String>>() {
             @Override
-            public void onChanged(List<Repo> repos) {
+            public void onChanged(List<String> repos) {
                 adapter.setItems(repos);
             }
         });

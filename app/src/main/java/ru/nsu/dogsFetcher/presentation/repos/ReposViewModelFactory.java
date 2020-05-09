@@ -7,9 +7,9 @@ import androidx.lifecycle.ViewModelProvider;
 import ru.nsu.dogsFetcher.data.model.User;
 
 public class ReposViewModelFactory implements ViewModelProvider.Factory {
-    private User user;
+    private String user;
 
-    public ReposViewModelFactory(User user) {
+    public ReposViewModelFactory(String user) {
         this.user = user;
     }
 

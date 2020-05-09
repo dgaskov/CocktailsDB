@@ -16,20 +16,20 @@ import ru.nsu.dogsFetcher.data.network.GithubApi;
 import ru.nsu.dogsFetcher.data.network.GithubApiClient;
 
 public class ReposViewModel extends ViewModel {
-    private User user;
+    private String user;
 
     private GithubApi api;
 
-    public LiveData<List<Repo>> observeReposLiveData() { return reposLiveData; }
-    private MutableLiveData<List<Repo>> reposLiveData = new MutableLiveData<>();
+    public LiveData<List<String>> observeShibesLiveData() { return shibesLiveData; }
+    private MutableLiveData<List<String>> shibesLiveData = new MutableLiveData<>();
 
-    public LiveData<User> observeUserLiveData() { return userLiveData; }
-    private MutableLiveData<User> userLiveData = new MutableLiveData<>();
+    public LiveData<String> observeUserLiveData() { return userLiveData; }
+    private MutableLiveData<String> userLiveData = new MutableLiveData<>();
 
     public LiveData<Boolean> observeIsLoadingLiveData() { return isLoadingLiveData; }
     private MutableLiveData<Boolean> isLoadingLiveData = new MutableLiveData<>(false);
 
-    public ReposViewModel(User user) {
+    public ReposViewModel(String user) {
         this.user = user;
 
         // todo make api singleton
@@ -42,14 +42,14 @@ public class ReposViewModel extends ViewModel {
         userLiveData.setValue(user);
 
         isLoadingLiveData.setValue(true);
-        api.getRepos(user.getLogin())
+        api.getShibesList()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new DisposableSingleObserver<List<Repo>>() {
+                .subscribe(new DisposableSingleObserver<List<String>>() {
                     @Override
-                    public void onSuccess(List<Repo> repos) {
+                    public void onSuccess(List<String> urls) {
                         isLoadingLiveData.setValue(false);
-                        reposLiveData.setValue(repos);
+                        shibesLiveData.setValue(urls);
                     }
 
                     @Override

@@ -11,18 +11,17 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import ru.nsu.dogsFetcher.R;
-import ru.nsu.dogsFetcher.data.model.User;
-import ru.nsu.dogsFetcher.data.model.UserList;
 import ru.nsu.dogsFetcher.presentation.repos.ReposActivity;
-import ru.nsu.dogsFetcher.presentation.userlist.list.OnUserClickListener;
+import ru.nsu.dogsFetcher.presentation.userlist.list.OnShibeClickListener;
 import ru.nsu.dogsFetcher.presentation.userlist.list.UserListAdapter;
 
 import static ru.nsu.dogsFetcher.presentation.repos.ReposActivity.USER_KEY;
 
-public class UserListActivity extends AppCompatActivity implements OnUserClickListener {
+public class UserListActivity extends AppCompatActivity implements OnShibeClickListener {
     public static String USER_LIST_KEY = "user_list_key";
     public static String QUERY_KEY = "query_key";
 
@@ -35,35 +34,19 @@ public class UserListActivity extends AppCompatActivity implements OnUserClickLi
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Bundle args = getIntent().getExtras();
-
         setContentView(R.layout.activity_user_list);
 
         rvUserList = findViewById(R.id.rvUsers);
         tvHeader = findViewById(R.id.tvHeader);
         userListAdapter = new UserListAdapter(this);
 
-        UserList list = new UserList();
-        String query = "";
-        if (args != null) {
-            list = (UserList) args.getSerializable(USER_LIST_KEY);
-            query = args.getString(QUERY_KEY);
-        }
-
+        viewModel = ViewModelProviders.of(this).get(UserListViewModel.class);
         initList();
+        viewModel.search();
 
-        viewModel = ViewModelProviders.of(this, new UserListViewModelFactory(query, list)).get(UserListViewModel.class);
-
-        viewModel.observeHeaderLiveData().observe(this, new Observer<String>() {
+        viewModel.observeShibeListLiveData().observe(this, new Observer<List<String>>() {
             @Override
-            public void onChanged(String s) {
-                tvHeader.setText(s);
-            }
-        });
-
-        viewModel.observeUserListLiveData().observe(this, new Observer<List<User>>() {
-            @Override
-            public void onChanged(List<User> users) {
+            public void onChanged(List<String> users) {
                 userListAdapter.setItems(users);
             }
         });
@@ -71,9 +54,9 @@ public class UserListActivity extends AppCompatActivity implements OnUserClickLi
     }
 
     @Override
-    public void onUserClick(User user) {
+    public void onClick(String url) {
         Intent intent = new Intent(UserListActivity.this, ReposActivity.class);
-        intent.putExtra(USER_KEY, user);
+        intent.putExtra(USER_KEY, url);
 
         startActivity(intent);
     }
