@@ -1,4 +1,4 @@
-package ru.nsu.template;
+package ru.nsu.dogsFetcher;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("ru.nsu.template", appContext.getPackageName());
+        assertEquals("ru.nsu.dogsFetcher", appContext.getPackageName());
     }
 }

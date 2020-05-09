@@ -1,4 +1,4 @@
-package ru.nsu.template.presentation.repos.list;
+package ru.nsu.dogsFetcher.presentation.repos.list;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.Collections;
 import java.util.List;
 
-import ru.nsu.template.R;
-import ru.nsu.template.data.model.Repo;
+import ru.nsu.dogsFetcher.R;
+import ru.nsu.dogsFetcher.data.model.Repo;
 
 public class ReposAdapter extends RecyclerView.Adapter<ReposAdapter.ViewHolder> {
     private List<Repo> items = Collections.emptyList();

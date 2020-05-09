@@ -1,4 +1,4 @@
-package ru.nsu.template.data.network;
+package ru.nsu.dogsFetcher.data.network;
 
 import java.util.List;
 
@@ -6,9 +6,8 @@ import io.reactivex.Single;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
-import ru.nsu.template.data.model.Repo;
-import ru.nsu.template.data.model.User;
-import ru.nsu.template.data.model.UserList;
+import ru.nsu.dogsFetcher.data.model.Repo;
+import ru.nsu.dogsFetcher.data.model.UserList;
 
 public interface GithubApi {
     @GET("/search/users")

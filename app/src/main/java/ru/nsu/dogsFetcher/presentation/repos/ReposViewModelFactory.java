@@ -1,10 +1,10 @@
-package ru.nsu.template.presentation.repos;
+package ru.nsu.dogsFetcher.presentation.repos;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-import ru.nsu.template.data.model.User;
+import ru.nsu.dogsFetcher.data.model.User;
 
 public class ReposViewModelFactory implements ViewModelProvider.Factory {
     private User user;

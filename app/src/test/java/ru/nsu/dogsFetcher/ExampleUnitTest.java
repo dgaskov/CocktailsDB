@@ -1,4 +1,4 @@
-package ru.nsu.template;
+package ru.nsu.dogsFetcher;
 
 import org.junit.Test;
 

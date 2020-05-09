@@ -1,4 +1,4 @@
-package ru.nsu.template.presentation.start;
+package ru.nsu.dogsFetcher.presentation.start;
 
 import android.annotation.SuppressLint;
 
@@ -6,16 +6,13 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import java.util.List;
-
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
-import ru.nsu.template.TemplateApplication;
-import ru.nsu.template.data.model.User;
-import ru.nsu.template.data.model.UserList;
-import ru.nsu.template.data.network.GithubApi;
-import ru.nsu.template.data.network.GithubApiClient;
+import ru.nsu.dogsFetcher.Application;
+import ru.nsu.dogsFetcher.data.model.UserList;
+import ru.nsu.dogsFetcher.data.network.GithubApi;
+import ru.nsu.dogsFetcher.data.network.GithubApiClient;
 
 public class StartViewModel extends ViewModel {
 
@@ -34,7 +31,7 @@ public class StartViewModel extends ViewModel {
     private GithubApi api;
 
     public StartViewModel() {
-        api = GithubApiClient.getClient(TemplateApplication.getInstance()).create(GithubApi.class);
+        api = GithubApiClient.getClient(Application.getInstance()).create(GithubApi.class);
     }
 
     public void validateUsername(String username) {

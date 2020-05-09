@@ -1,4 +1,4 @@
-package ru.nsu.template.presentation.repos;
+package ru.nsu.dogsFetcher.presentation.repos;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -7,14 +7,13 @@ import androidx.lifecycle.ViewModel;
 import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.observers.DisposableMaybeObserver;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
-import ru.nsu.template.TemplateApplication;
-import ru.nsu.template.data.model.Repo;
-import ru.nsu.template.data.model.User;
-import ru.nsu.template.data.network.GithubApi;
-import ru.nsu.template.data.network.GithubApiClient;
+import ru.nsu.dogsFetcher.Application;
+import ru.nsu.dogsFetcher.data.model.Repo;
+import ru.nsu.dogsFetcher.data.model.User;
+import ru.nsu.dogsFetcher.data.network.GithubApi;
+import ru.nsu.dogsFetcher.data.network.GithubApiClient;
 
 public class ReposViewModel extends ViewModel {
     private User user;
@@ -34,7 +33,7 @@ public class ReposViewModel extends ViewModel {
         this.user = user;
 
         // todo make api singleton
-        api = GithubApiClient.getClient(TemplateApplication.getInstance()).create(GithubApi.class);
+        api = GithubApiClient.getClient(Application.getInstance()).create(GithubApi.class);
 
         init();
     }

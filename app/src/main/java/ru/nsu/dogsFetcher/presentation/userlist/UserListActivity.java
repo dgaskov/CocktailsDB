@@ -1,28 +1,26 @@
-package ru.nsu.template.presentation.userlist;
+package ru.nsu.dogsFetcher.presentation.userlist;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import ru.nsu.template.R;
-import ru.nsu.template.data.model.User;
-import ru.nsu.template.data.model.UserList;
-import ru.nsu.template.presentation.repos.ReposActivity;
-import ru.nsu.template.presentation.userlist.list.OnUserClickListener;
-import ru.nsu.template.presentation.userlist.list.UserListAdapter;
+import ru.nsu.dogsFetcher.R;
+import ru.nsu.dogsFetcher.data.model.User;
+import ru.nsu.dogsFetcher.data.model.UserList;
+import ru.nsu.dogsFetcher.presentation.repos.ReposActivity;
+import ru.nsu.dogsFetcher.presentation.userlist.list.OnUserClickListener;
+import ru.nsu.dogsFetcher.presentation.userlist.list.UserListAdapter;
 
-import static ru.nsu.template.presentation.repos.ReposActivity.USER_KEY;
+import static ru.nsu.dogsFetcher.presentation.repos.ReposActivity.USER_KEY;
 
 public class UserListActivity extends AppCompatActivity implements OnUserClickListener {
     public static String USER_LIST_KEY = "user_list_key";

@@ -1,6 +1,5 @@
-package ru.nsu.template.presentation.userlist.list;
+package ru.nsu.dogsFetcher.presentation.userlist.list;
 
-import android.media.Image;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,8 +14,8 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
-import ru.nsu.template.R;
-import ru.nsu.template.data.model.User;
+import ru.nsu.dogsFetcher.R;
+import ru.nsu.dogsFetcher.data.model.User;
 
 public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.ViewHolder> {
     private List<User> items;

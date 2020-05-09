@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Template</string>
+    <string name="app_name">DogsFetcher</string>
 
     <string name="start_hint">Enter username</string>
     <string name="start_username_hint">Type here…</string>

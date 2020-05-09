@@ -1,8 +1,7 @@
-package ru.nsu.template.presentation.start;
+package ru.nsu.dogsFetcher.presentation.start;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Context;
@@ -17,11 +16,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import ru.nsu.template.R;
-import ru.nsu.template.TemplateApplication;
-import ru.nsu.template.data.model.User;
-import ru.nsu.template.data.model.UserList;
-import ru.nsu.template.presentation.userlist.UserListActivity;
+import ru.nsu.dogsFetcher.R;
+import ru.nsu.dogsFetcher.data.model.UserList;
+import ru.nsu.dogsFetcher.presentation.userlist.UserListActivity;
 
 public class StartActivity extends AppCompatActivity {
     StartViewModel viewModel;

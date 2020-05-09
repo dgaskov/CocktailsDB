@@ -1,12 +1,10 @@
-package ru.nsu.template.presentation.userlist;
-
-import android.app.Application;
+package ru.nsu.dogsFetcher.presentation.userlist;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-import ru.nsu.template.data.model.UserList;
+import ru.nsu.dogsFetcher.data.model.UserList;
 
 public class UserListViewModelFactory implements ViewModelProvider.Factory {
     private String query;
