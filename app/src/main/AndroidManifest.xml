@@ -20,9 +20,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".presentation.userlist.UserListActivity"/>
-
-        <activity android:name=".presentation.repos.ReposActivity"/>
+        <activity
+            android:name=".presentation.fullImage.FullImageActivity"/>
     </application>
 
 </manifest>
