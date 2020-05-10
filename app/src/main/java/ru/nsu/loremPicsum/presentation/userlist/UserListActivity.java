@@ -1,4 +1,4 @@
-package ru.nsu.dogsFetcher.presentation.userlist;
+package ru.nsu.loremPicsum.presentation.userlist;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,14 +13,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import ru.nsu.dogsFetcher.R;
-import ru.nsu.dogsFetcher.data.model.User;
-import ru.nsu.dogsFetcher.data.model.UserList;
-import ru.nsu.dogsFetcher.presentation.repos.ReposActivity;
-import ru.nsu.dogsFetcher.presentation.userlist.list.OnUserClickListener;
-import ru.nsu.dogsFetcher.presentation.userlist.list.UserListAdapter;
+import ru.nsu.loremPicsum.R;
+import ru.nsu.loremPicsum.data.model.User;
+import ru.nsu.loremPicsum.data.model.UserList;
+import ru.nsu.loremPicsum.presentation.repos.ReposActivity;
+import ru.nsu.loremPicsum.presentation.userlist.list.OnUserClickListener;
+import ru.nsu.loremPicsum.presentation.userlist.list.UserListAdapter;
 
-import static ru.nsu.dogsFetcher.presentation.repos.ReposActivity.USER_KEY;
+import static ru.nsu.loremPicsum.presentation.repos.ReposActivity.USER_KEY;
 
 public class UserListActivity extends AppCompatActivity implements OnUserClickListener {
     public static String USER_LIST_KEY = "user_list_key";

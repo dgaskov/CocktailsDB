@@ -1,4 +1,4 @@
-package ru.nsu.dogsFetcher.data.network;
+package ru.nsu.loremPicsum.data.network;
 
 import android.content.Context;
 

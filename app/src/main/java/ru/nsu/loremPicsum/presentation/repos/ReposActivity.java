@@ -1,4 +1,4 @@
-package ru.nsu.dogsFetcher.presentation.repos;
+package ru.nsu.loremPicsum.presentation.repos;
 
 import android.content.Context;
 import android.net.Uri;
@@ -17,10 +17,10 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
-import ru.nsu.dogsFetcher.R;
-import ru.nsu.dogsFetcher.data.model.Repo;
-import ru.nsu.dogsFetcher.data.model.User;
-import ru.nsu.dogsFetcher.presentation.repos.list.ReposAdapter;
+import ru.nsu.loremPicsum.R;
+import ru.nsu.loremPicsum.data.model.Repo;
+import ru.nsu.loremPicsum.data.model.User;
+import ru.nsu.loremPicsum.presentation.repos.list.ReposAdapter;
 
 public class ReposActivity extends AppCompatActivity {
     public static String USER_KEY = "user_key";

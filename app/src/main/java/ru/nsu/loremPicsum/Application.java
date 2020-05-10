@@ -1,4 +1,4 @@
-package ru.nsu.dogsFetcher;
+package ru.nsu.loremPicsum;
 
 public class Application extends android.app.Application {
     public static Application application;

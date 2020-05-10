@@ -1,4 +1,4 @@
-package ru.nsu.dogsFetcher.presentation.userlist.list;
+package ru.nsu.loremPicsum.presentation.userlist.list;
 
 import android.net.Uri;
 import android.view.LayoutInflater;
@@ -14,8 +14,8 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
-import ru.nsu.dogsFetcher.R;
-import ru.nsu.dogsFetcher.data.model.User;
+import ru.nsu.loremPicsum.R;
+import ru.nsu.loremPicsum.data.model.User;
 
 public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.ViewHolder> {
     private List<User> items;

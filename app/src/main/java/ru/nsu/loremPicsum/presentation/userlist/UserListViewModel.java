@@ -1,4 +1,4 @@
-package ru.nsu.dogsFetcher.presentation.userlist;
+package ru.nsu.loremPicsum.presentation.userlist;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -6,10 +6,10 @@ import androidx.lifecycle.ViewModel;
 
 import java.util.List;
 
-import ru.nsu.dogsFetcher.R;
-import ru.nsu.dogsFetcher.Application;
-import ru.nsu.dogsFetcher.data.model.User;
-import ru.nsu.dogsFetcher.data.model.UserList;
+import ru.nsu.loremPicsum.R;
+import ru.nsu.loremPicsum.Application;
+import ru.nsu.loremPicsum.data.model.User;
+import ru.nsu.loremPicsum.data.model.UserList;
 
 public class UserListViewModel extends ViewModel {
     private UserList userList;

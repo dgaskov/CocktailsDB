@@ -1,4 +1,4 @@
-package ru.nsu.dogsFetcher.presentation.repos;
+package ru.nsu.loremPicsum.presentation.repos;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -9,11 +9,11 @@ import java.util.List;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
-import ru.nsu.dogsFetcher.Application;
-import ru.nsu.dogsFetcher.data.model.Repo;
-import ru.nsu.dogsFetcher.data.model.User;
-import ru.nsu.dogsFetcher.data.network.GithubApi;
-import ru.nsu.dogsFetcher.data.network.GithubApiClient;
+import ru.nsu.loremPicsum.Application;
+import ru.nsu.loremPicsum.data.model.Repo;
+import ru.nsu.loremPicsum.data.model.User;
+import ru.nsu.loremPicsum.data.network.GithubApi;
+import ru.nsu.loremPicsum.data.network.GithubApiClient;
 
 public class ReposViewModel extends ViewModel {
     private User user;

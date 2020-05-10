@@ -1,4 +1,4 @@
-package ru.nsu.dogsFetcher;
+package ru.nsu.loremPicsum;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package ru.nsu.dogsFetcher;
+package ru.nsu.loremPicsum;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("ru.nsu.dogsFetcher", appContext.getPackageName());
+        assertEquals("ru.nsu.LoremPicsum", appContext.getPackageName());
     }
 }

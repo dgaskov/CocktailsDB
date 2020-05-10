@@ -1,4 +1,4 @@
-package ru.nsu.dogsFetcher.data.model;
+package ru.nsu.loremPicsum.data.model;
 
 import com.google.gson.annotations.SerializedName;
 

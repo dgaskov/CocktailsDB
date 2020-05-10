@@ -1,4 +1,4 @@
-package ru.nsu.dogsFetcher.presentation.start;
+package ru.nsu.loremPicsum.presentation.start;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -16,9 +16,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import ru.nsu.dogsFetcher.R;
-import ru.nsu.dogsFetcher.data.model.UserList;
-import ru.nsu.dogsFetcher.presentation.userlist.UserListActivity;
+import ru.nsu.loremPicsum.R;
+import ru.nsu.loremPicsum.data.model.UserList;
+import ru.nsu.loremPicsum.presentation.userlist.UserListActivity;
 
 public class StartActivity extends AppCompatActivity {
     StartViewModel viewModel;

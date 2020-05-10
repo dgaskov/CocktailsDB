@@ -1,10 +1,10 @@
-package ru.nsu.dogsFetcher.presentation.userlist;
+package ru.nsu.loremPicsum.presentation.userlist;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-import ru.nsu.dogsFetcher.data.model.UserList;
+import ru.nsu.loremPicsum.data.model.UserList;
 
 public class UserListViewModelFactory implements ViewModelProvider.Factory {
     private String query;
