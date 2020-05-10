@@ -7,11 +7,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_image_details.view.*
 import ru.nsu.loremPicsum.R
-import ru.nsu.loremPicsum.data.model.ImageDetails
+import ru.nsu.loremPicsum.data.model.ImageMetainfo
 
 class ImageListAdapter(private val itemClickListener: OnImageClickListener)
     : RecyclerView.Adapter<ImageListAdapter.ViewHolder>() {
-    var items: List<ImageDetails> = emptyList()
+    var items: List<ImageMetainfo> = emptyList()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -34,7 +34,7 @@ class ImageListAdapter(private val itemClickListener: OnImageClickListener)
         private val width: TextView = itemView.widthTextView
         private var height: TextView = itemView.heightTextView
 
-        fun bind(model: ImageDetails, clickListener: OnImageClickListener) {
+        fun bind(model: ImageMetainfo, clickListener: OnImageClickListener) {
             author.text = model.author
             width.text = itemView.context.getString(R.string.image_details_card_width, model.width)
             height.text = itemView.context.getString(R.string.image_details_card_height, model.height)

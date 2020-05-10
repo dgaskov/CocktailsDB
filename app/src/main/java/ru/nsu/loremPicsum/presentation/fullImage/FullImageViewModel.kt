@@ -1,4 +1,4 @@
-package ru.nsu.loremPicsum.presentation.imageList
+package ru.nsu.loremPicsum.presentation.fullImage
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -6,20 +6,20 @@ import androidx.lifecycle.ViewModel
 import ru.nsu.loremPicsum.Application
 import ru.nsu.loremPicsum.common.humanReadable
 import ru.nsu.loremPicsum.common.setupSchedulers
-import ru.nsu.loremPicsum.data.model.ImageMetainfo
+import ru.nsu.loremPicsum.data.model.ImageDetails
 
-class ImageListViewModel: ViewModel() {
-    private val imageDetailsList = MutableLiveData<List<ImageMetainfo>>()
-    val getImageList: LiveData<List<ImageMetainfo>> get() = imageDetailsList
+class FullImageViewModel: ViewModel() {
+    private val imageDetails = MutableLiveData<ImageDetails>()
+    val getImage: LiveData<ImageDetails> get() = imageDetails
 
     private val errors = MutableLiveData<String>()
     val getErrors: LiveData<String> = errors
 
-    fun fetchImages() {
-        Application.apiProvider.loremPicsumAPI.getImageIds()
+    fun fetchImageURL(id: Int) {
+        Application.apiProvider.loremPicsumAPI.getImageDetails(id)
                 .setupSchedulers()
                 .subscribe({
-                    imageDetailsList.value = it.asList()
+                    imageDetails.value = it
                 }, {
                     errors.value = it.humanReadable
                 })

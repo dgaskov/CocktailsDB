@@ -2,29 +2,47 @@ package ru.nsu.loremPicsum.presentation.fullImage
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_full_image.*
 import ru.nsu.loremPicsum.R
 
 class FullImageActivity: AppCompatActivity() {
+    private lateinit var viewModel: FullImageViewModel
     private var systemUIVisible = false
 
     companion object {
-        const val URL_KEY = "IMAGE_URL_KEY"
+        const val ID_KEY = "IMAGE_ID_KEY"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_full_image)
+        setImageViewOnClickListener()
+
+        initAndSubscribeViewModel()
 
         val args = intent.extras
-        val url = args?.getString(URL_KEY)
+        val imageId = args?.getInt(ID_KEY) ?: 0
+        viewModel.fetchImageURL(imageId)
+    }
 
-        Glide.with(this)
-                .load(url)
-                .into(imageView)
+    private fun initAndSubscribeViewModel() {
+        viewModel = ViewModelProviders.of(this).get(FullImageViewModel::class.java)
+        viewModel.getImage.observe(this, Observer {
+            Glide.with(this)
+                    .load(it.downloadURL)
+                    .into(imageView)
+        })
+        viewModel.getErrors.observe(this, Observer {
+            Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
+        })
+    }
 
+    private fun setImageViewOnClickListener() {
         imageView.setOnClickListener {
             if (systemUIVisible) {
                 hideSystemUI()
