@@ -6,12 +6,14 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_full_image.*
 import ru.nsu.loremPicsum.R
 
 class FullImageActivity: AppCompatActivity() {
     private lateinit var viewModel: FullImageViewModel
+    private lateinit var circularProgressDrawable: CircularProgressDrawable
     private var systemUIVisible = false
 
     companion object {
@@ -22,6 +24,7 @@ class FullImageActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_full_image)
         setImageViewOnClickListener()
+        setLoadingPlaceholder()
 
         initAndSubscribeViewModel()
 
@@ -34,7 +37,8 @@ class FullImageActivity: AppCompatActivity() {
         viewModel = ViewModelProviders.of(this).get(FullImageViewModel::class.java)
         viewModel.getImage.observe(this, Observer {
             Glide.with(this)
-                    .load(it.downloadURL)
+                    .load(it.downloadURL.toString())
+                    .placeholder(circularProgressDrawable)
                     .into(imageView)
         })
         viewModel.getErrors.observe(this, Observer {
@@ -51,6 +55,13 @@ class FullImageActivity: AppCompatActivity() {
             }
             systemUIVisible = !systemUIVisible
         }
+    }
+
+    private fun setLoadingPlaceholder() {
+        circularProgressDrawable = CircularProgressDrawable(this)
+        circularProgressDrawable.strokeWidth = 5f
+        circularProgressDrawable.centerRadius = 30f
+        circularProgressDrawable.start()
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
