@@ -30,6 +30,8 @@ class CocktailsInCategoryActivity: AppCompatActivity(), ItemClickListener<DrinkC
 
         val args = intent.extras
         val cocktailCategory = args?.getString(CATEGORY_KEY) ?: "Ordinary_Drink"
+        val categoryUnescaped = cocktailCategory.replace('_', ' ', false)
+        title = categoryUnescaped
         disposable.add(viewModel.start(cocktailCategory))
     }
 

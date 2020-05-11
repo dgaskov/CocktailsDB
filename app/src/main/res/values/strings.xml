@@ -2,4 +2,6 @@
     <string name="app_name">AlcoHelper</string>
     <string name="cocktail_details_receipt_title">Receipt</string>
     <string name="cocktail_details_amount">Amount: %s</string>
+
+    <string name="categories">Categories</string>
 </resources>
