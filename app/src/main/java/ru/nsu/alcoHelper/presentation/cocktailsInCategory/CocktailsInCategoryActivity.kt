@@ -8,7 +8,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import io.reactivex.disposables.CompositeDisposable
-import kotlinx.android.synthetic.main.activity_cocktails_in_category.*
+import kotlinx.android.synthetic.main.activity_list.*
 import ru.nsu.alcoHelper.R
 import ru.nsu.alcoHelper.common.ItemClickListener
 import ru.nsu.alcoHelper.data.model.DrinkCompactInfo
@@ -20,11 +20,11 @@ class CocktailsInCategoryActivity: AppCompatActivity(), ItemClickListener<DrinkC
     private val disposable = CompositeDisposable()
     private lateinit var adapter: CocktailsInCategoryListAdapter
     companion object {
-        private const val CATEGORY_KEY = "COCKTAIL_CATEGORY_KEY"
+        const val CATEGORY_KEY = "COCKTAIL_CATEGORY_KEY"
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_cocktails_in_category)
+        setContentView(R.layout.activity_list)
         initRecyclerView()
         initAndSubscribeViewModel()
 
@@ -35,7 +35,7 @@ class CocktailsInCategoryActivity: AppCompatActivity(), ItemClickListener<DrinkC
 
     private fun initAndSubscribeViewModel() {
         viewModel = ViewModelProviders.of(this).get(CocktailsInCategoryViewModel::class.java)
-        viewModel.getCocktailCategories.observe(this, Observer {
+        viewModel.getCocktailsInCategory.observe(this, Observer {
             adapter.items = it
         })
         viewModel.getErrors.observe(this, Observer {
