@@ -2,6 +2,7 @@ package ru.nsu.alcoHelper.presentation.cocktailDetails
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -46,6 +47,9 @@ class CocktailDetailsActivity: AppCompatActivity() {
         })
         viewModel.getCocktailReceiptBody.observe(this, Observer {
             receiptBody.text = it
+        })
+        viewModel.getIsLoading.observe(this, Observer {
+            progressBar.visibility = if (it) View.VISIBLE else View.GONE
         })
         viewModel.getCocktailImageURL.observe(this, Observer {
             Glide.with(this)

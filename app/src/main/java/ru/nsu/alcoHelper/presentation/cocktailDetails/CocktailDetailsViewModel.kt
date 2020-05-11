@@ -22,10 +22,14 @@ class CocktailDetailsViewModel: ViewModel() {
     private val cocktailImageURL = MutableLiveData<String>()
     val getCocktailImageURL: LiveData<String> get() = cocktailImageURL
 
+    private val isLoading = MutableLiveData<Boolean>()
+    val getIsLoading: LiveData<Boolean> = isLoading
+
     private val errors = MutableLiveData<String>()
     val getErrors: LiveData<String> = errors
 
     fun start(cocktailId: String): Disposable {
+        isLoading.value = true
         return Application.apiProvider.cocktailDBAPI.getCocktailById(cocktailId)
             .setupSchedulers()
             .map {
@@ -37,11 +41,13 @@ class CocktailDetailsViewModel: ViewModel() {
                 }
             }
             .subscribe({
+                isLoading.value = false
                 cocktailName.value = it?.name
                 cocktailIngredients.value = it?.ingredients
                 cocktailReceiptBody.value = it?.instructions
                 cocktailImageURL.value = it?.image.toString()
             }, {
+                isLoading.value = false
                 errors.value = it.humanReadable
             })
     }
