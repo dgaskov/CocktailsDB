@@ -20,7 +20,7 @@ class CoctailCategoriesActivity: AppCompatActivity(), ItemClickListener<DrinkCom
     private val disposable = CompositeDisposable()
     private lateinit var adapter: CoctailCategoryListAdapter
     companion object {
-        private val CATEGORY_KEY = "COCTAIL_CATEGORY_KEY"
+        private const val CATEGORY_KEY = "COCTAIL_CATEGORY_KEY"
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -8,13 +8,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class APIProvider {
-    val loremPicsumAPI: LoremPicsumAPI by lazy {
-        makeRxApiBuilder(LoremPicsumAPI.baseUrl)
-                .client(OkHttpClient().newBuilder().addInterceptor(loggingInterceptor()).build())
-                .build()
-                .create(LoremPicsumAPI::class.java)
-    }
-
     val coctailDBAPI: CoctailDBAPI by lazy {
         makeRxApiBuilder(CoctailDBAPI.baseUrl)
             .client(OkHttpClient().newBuilder().addInterceptor(loggingInterceptor()).build())

@@ -1,9 +1,5 @@
 <resources>
     <string name="app_name">AlcoHelper</string>
-
-    <string name="image_details_card_width">Width: %d</string>
-    <string name="image_details_card_height">Height: %d</string>
-
     <string name="coctail_details_receipt_title">Receipt</string>
     <string name="coctail_details_amount">Amount: %s</string>
 </resources>
