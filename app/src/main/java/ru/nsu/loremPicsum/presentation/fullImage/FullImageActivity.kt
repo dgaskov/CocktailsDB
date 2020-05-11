@@ -8,16 +8,18 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import kotlinx.android.synthetic.main.activity_coctail_details.*
 import kotlinx.android.synthetic.main.activity_full_image.*
+import kotlinx.android.synthetic.main.activity_full_image.imageView
 import ru.nsu.loremPicsum.R
 
 class FullImageActivity: AppCompatActivity() {
-    private lateinit var viewModel: FullImageViewModel
     private lateinit var circularProgressDrawable: CircularProgressDrawable
     private var systemUIVisible = false
 
     companion object {
-        const val ID_KEY = "IMAGE_ID_KEY"
+        const val URL_KEY = "IMAGE_URL"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,24 +28,13 @@ class FullImageActivity: AppCompatActivity() {
         setImageViewOnClickListener()
         setLoadingPlaceholder()
 
-        initAndSubscribeViewModel()
-
         val args = intent.extras
-        val imageId = args?.getInt(ID_KEY) ?: 0
-        viewModel.fetchImageURL(imageId)
-    }
+        val imageURL = args?.getString(URL_KEY) ?: ""
 
-    private fun initAndSubscribeViewModel() {
-        viewModel = ViewModelProviders.of(this).get(FullImageViewModel::class.java)
-        viewModel.getImage.observe(this, Observer {
-            Glide.with(this)
-                    .load(it.downloadURL.toString())
-                    .placeholder(circularProgressDrawable)
-                    .into(imageView)
-        })
-        viewModel.getErrors.observe(this, Observer {
-            Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
-        })
+        Glide.with(this)
+            .load(imageURL)
+            .placeholder(circularProgressDrawable)
+            .into(imageView)
     }
 
     private fun setImageViewOnClickListener() {

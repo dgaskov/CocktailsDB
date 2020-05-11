@@ -20,11 +20,14 @@ class CoctailDetailsViewModel: ViewModel() {
     private val coctailReceiptBody = MutableLiveData<String>()
     val getCoctailReceiptBody: LiveData<String> get() = coctailReceiptBody
 
+    private val coctailImageURL = MutableLiveData<String>()
+    val getCoctailImageURL: LiveData<String> get() = coctailImageURL
+
     private val errors = MutableLiveData<String>()
     val getErrors: LiveData<String> = errors
 
-    fun start(coctailId: Int): Disposable {
-        return Application.apiProvider.coctailDBAPI.getCoctailById(11007.toString())
+    fun start(coctailId: String): Disposable {
+        return Application.apiProvider.coctailDBAPI.getCoctailById(coctailId)
             .setupSchedulers()
             .map {
                 val drink = it.drinks.firstOrNull()
@@ -38,6 +41,7 @@ class CoctailDetailsViewModel: ViewModel() {
                 coctailName.value = it?.name
                 coctailIngredients.value = it?.ingredients
                 coctailReceiptBody.value = it?.instructions
+                coctailImageURL.value = it?.image.toString()
             }, {
                 errors.value = it.humanReadable
             })
