@@ -8,9 +8,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import io.reactivex.disposables.CompositeDisposable
-import kotlinx.android.synthetic.main.activity_cocktail_details.*
+import kotlinx.android.synthetic.main.activity_cocktail_details_content.*
+import kotlinx.android.synthetic.main.activity_cocktail_details_scrolling.*
 import ru.nsu.alcoHelper.R
 import ru.nsu.alcoHelper.presentation.cocktailDetails.list.CocktailIngredientsListAdapter
 import ru.nsu.alcoHelper.presentation.fullImage.FullImageActivity
@@ -25,7 +25,7 @@ class CocktailDetailsActivity: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_cocktail_details)
+        setContentView(R.layout.activity_cocktail_details_scrolling)
         setImageOnClickListener()
         initRecyclerView()
         initAndSubscribeViewModel()
@@ -38,7 +38,8 @@ class CocktailDetailsActivity: AppCompatActivity() {
     private fun initAndSubscribeViewModel() {
         viewModel = ViewModelProviders.of(this).get(CocktailDetailsViewModel::class.java)
         viewModel.getCocktailName.observe(this, Observer {
-            cocktailName.text = it
+            title = it
+            setSupportActionBar(toolbar)
         })
         viewModel.getCocktailIngredients.observe(this, Observer {
             adapter.items = it
@@ -49,8 +50,7 @@ class CocktailDetailsActivity: AppCompatActivity() {
         viewModel.getCocktailImageURL.observe(this, Observer {
             Glide.with(this)
                 .load(it)
-                .transform(RoundedCorners(100))
-                .into(imageView)
+                .into(toolbarBackground)
         })
         viewModel.getErrors.observe(this, Observer {
             Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
@@ -64,7 +64,7 @@ class CocktailDetailsActivity: AppCompatActivity() {
     }
 
     private fun setImageOnClickListener() {
-        imageView.setOnClickListener {
+        fab.setOnClickListener {
             val url = viewModel.getCocktailImageURL.value
             if (url == null) {
                 Toast.makeText(this, "", Toast.LENGTH_SHORT).show()
