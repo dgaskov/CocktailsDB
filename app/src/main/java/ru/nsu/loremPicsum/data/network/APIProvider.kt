@@ -15,9 +15,19 @@ class APIProvider {
                 .create(LoremPicsumAPI::class.java)
     }
 
+    val coctailDBAPI: CoctailDBAPI by lazy {
+        makeRxApiBuilder(CoctailDBAPI.baseUrl)
+            .client(OkHttpClient().newBuilder().addInterceptor(loggingInterceptor()).build())
+            .build()
+            .create(CoctailDBAPI::class.java)
+    }
+
     @Suppress("SameParameterValue")
     private fun makeRxApiBuilder(baseUrl: String): Retrofit.Builder {
-        val gson = GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create()
+        val gson = GsonBuilder()
+            .setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+            .setPrettyPrinting()
+            .create()
         return Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())

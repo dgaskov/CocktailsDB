@@ -1,13 +1,9 @@
 <resources>
     <string name="app_name">LoremPicsum</string>
 
-    <string name="start_hint">Enter username</string>
-    <string name="start_username_hint">Type here…</string>
-    <string name="start_search">Search</string>
-    <string name="start_error_no_results">There\'s no results for your query.</string>
-
-    <string name="user_list_header">For query \"%1$s\" found %2$d results</string>
-
     <string name="image_details_card_width">Width: %d</string>
     <string name="image_details_card_height">Height: %d</string>
+
+    <string name="coctail_details_receipt_title">Receipt</string>
+    <string name="coctail_details_amount">Amount: %s</string>
 </resources>
