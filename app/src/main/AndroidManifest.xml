@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ru.nsu.alcoHelper">
+    package="ru.nsu.cocktailDB">
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
@@ -9,21 +9,21 @@
         android:icon="@mipmap/ic_launch"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:name="ru.nsu.alcoHelper.Application"
+        android:name="ru.nsu.cocktailDB.Application"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="ru.nsu.alcoHelper.presentation.cocktailCategories.CocktailCategoriesActivity">
+        <activity android:name="ru.nsu.cocktailDB.presentation.cocktailCategories.CocktailCategoriesActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".presentation.fullImage.FullImageActivity"/>
+        <activity android:name="ru.nsu.cocktailDB.presentation.fullImage.FullImageActivity"/>
         <activity
-            android:name=".presentation.cocktailDetails.CocktailDetailsActivity"
+            android:name="ru.nsu.cocktailDB.presentation.cocktailDetails.CocktailDetailsActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".presentation.cocktailsInCategory.CocktailsInCategoryActivity"/>
+        <activity android:name="ru.nsu.cocktailDB.presentation.cocktailsInCategory.CocktailsInCategoryActivity"/>
     </application>
 
 </manifest>

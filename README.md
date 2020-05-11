@@ -1,1 +1,1 @@
-# NsuTemplate
+# CocktailsDB
