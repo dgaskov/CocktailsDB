@@ -25,6 +25,7 @@ class CocktailCategoriesActivity: AppCompatActivity(), ItemClickListener<Cocktai
         setContentView(R.layout.activity_list)
         initRecyclerView()
         initAndSubscribeViewModel()
+        title = getString(R.string.categories)
 
         disposable.add(viewModel.start())
     }
