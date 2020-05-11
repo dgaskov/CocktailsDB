@@ -1,4 +1,4 @@
-package ru.nsu.alcoHelper.presentation.coctailCategories
+package ru.nsu.alcoHelper.presentation.cocktailsInCategory
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -9,18 +9,18 @@ import ru.nsu.alcoHelper.common.humanReadable
 import ru.nsu.alcoHelper.common.setupSchedulers
 import ru.nsu.alcoHelper.data.model.DrinkCompactInfo
 
-class CoctailCategoriesViewModel: ViewModel() {
-    private val coctailCategories = MutableLiveData<List<DrinkCompactInfo>>()
-    val getCoctailCategories: LiveData<List<DrinkCompactInfo>> get() = coctailCategories
+class CocktailsInCategoryViewModel: ViewModel() {
+    private val cocktailCategories = MutableLiveData<List<DrinkCompactInfo>>()
+    val getCocktailCategories: LiveData<List<DrinkCompactInfo>> get() = cocktailCategories
 
     private val errors = MutableLiveData<String>()
     val getErrors: LiveData<String> = errors
 
     fun start(categoryName: String): Disposable {
-        return Application.apiProvider.coctailDBAPI.getCoctailsByCategory(categoryName)
+        return Application.apiProvider.cocktailDBAPI.getCocktailsByCategory(categoryName)
             .setupSchedulers()
             .subscribe({
-                coctailCategories.value = it?.drinks
+                cocktailCategories.value = it?.drinks
             }, {
                 errors.value = it.humanReadable
             })

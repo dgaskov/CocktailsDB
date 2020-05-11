@@ -7,14 +7,14 @@ import ru.nsu.alcoHelper.data.model.DrinkCompactInfo
 import ru.nsu.alcoHelper.data.model.DrinkDetailedInfo
 import ru.nsu.alcoHelper.data.model.response.DrinksResponse
 
-interface CoctailDBAPI {
+interface CocktailDBAPI {
     companion object {
         const val baseUrl = "https://thecocktaildb.com/api/json/v1/1/"
     }
 
     @GET("filter.php")
-    fun getCoctailsByCategory(@Query("c") category: String): Single<DrinksResponse<DrinkCompactInfo>>
+    fun getCocktailsByCategory(@Query("c") category: String): Single<DrinksResponse<DrinkCompactInfo>>
 
     @GET("lookup.php")
-    fun getCoctailById(@Query("i") id: String): Single<DrinksResponse<DrinkDetailedInfo>>
+    fun getCocktailById(@Query("i") id: String): Single<DrinksResponse<DrinkDetailedInfo>>
 }

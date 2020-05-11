@@ -1,4 +1,4 @@
-package ru.nsu.alcoHelper.presentation.coctailDetails.list
+package ru.nsu.alcoHelper.presentation.cocktailDetails.list
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.item_ingredient.view.*
 import ru.nsu.alcoHelper.R
 import ru.nsu.alcoHelper.data.model.Ingredient
 
-class CoctailIngredientsListAdapter: RecyclerView.Adapter<CoctailIngredientsListAdapter.ViewHolder>() {
+class CocktailIngredientsListAdapter: RecyclerView.Adapter<CocktailIngredientsListAdapter.ViewHolder>() {
     var items: List<Ingredient> = emptyList()
         set(value) {
             field = value
@@ -34,7 +34,7 @@ class CoctailIngredientsListAdapter: RecyclerView.Adapter<CoctailIngredientsList
 
         fun bind(model: Ingredient) {
             ingredientName.text = model.name
-            ingredientAmount.text = itemView.context.getString(R.string.coctail_details_amount, model.amount)
+            ingredientAmount.text = itemView.context.getString(R.string.cocktail_details_amount, model.amount)
         }
     }
 }

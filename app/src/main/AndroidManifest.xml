@@ -12,7 +12,7 @@
         android:name="ru.nsu.alcoHelper.Application"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="ru.nsu.alcoHelper.presentation.coctailCategories.CoctailCategoriesActivity">
+        <activity android:name="ru.nsu.alcoHelper.presentation.cocktailsInCategory.CocktailsInCategoryActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -20,7 +20,7 @@
         </activity>
 
         <activity android:name="ru.nsu.alcoHelper.presentation.fullImage.FullImageActivity"/>
-        <activity android:name="ru.nsu.alcoHelper.presentation.coctailDetails.CoctailDetailsActivity" />
+        <activity android:name="ru.nsu.alcoHelper.presentation.cocktailDetails.CocktailDetailsActivity" />
     </application>
 
 </manifest>

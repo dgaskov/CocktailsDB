@@ -8,11 +8,11 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class APIProvider {
-    val coctailDBAPI: CoctailDBAPI by lazy {
-        makeRxApiBuilder(CoctailDBAPI.baseUrl)
+    val cocktailDBAPI: CocktailDBAPI by lazy {
+        makeRxApiBuilder(CocktailDBAPI.baseUrl)
             .client(OkHttpClient().newBuilder().addInterceptor(loggingInterceptor()).build())
             .build()
-            .create(CoctailDBAPI::class.java)
+            .create(CocktailDBAPI::class.java)
     }
 
     @Suppress("SameParameterValue")

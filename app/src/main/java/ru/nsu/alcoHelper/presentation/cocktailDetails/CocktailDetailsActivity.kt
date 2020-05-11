@@ -1,4 +1,4 @@
-package ru.nsu.alcoHelper.presentation.coctailDetails
+package ru.nsu.alcoHelper.presentation.cocktailDetails
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,43 +10,43 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import io.reactivex.disposables.CompositeDisposable
-import kotlinx.android.synthetic.main.activity_coctail_details.*
+import kotlinx.android.synthetic.main.activity_cocktail_details.*
 import ru.nsu.alcoHelper.R
-import ru.nsu.alcoHelper.presentation.coctailDetails.list.CoctailIngredientsListAdapter
+import ru.nsu.alcoHelper.presentation.cocktailDetails.list.CocktailIngredientsListAdapter
 import ru.nsu.alcoHelper.presentation.fullImage.FullImageActivity
 
-class CoctailDetailsActivity: AppCompatActivity() {
-    private lateinit var viewModel: CoctailDetailsViewModel
-    private lateinit var adapter: CoctailIngredientsListAdapter
+class CocktailDetailsActivity: AppCompatActivity() {
+    private lateinit var viewModel: CocktailDetailsViewModel
+    private lateinit var adapter: CocktailIngredientsListAdapter
     private val disposable = CompositeDisposable()
     companion object {
-        const val ID_KEY = "COCTAIL_ID_KEY"
+        const val ID_KEY = "COCKTAIL_ID_KEY"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_coctail_details)
+        setContentView(R.layout.activity_cocktail_details)
         setImageOnClickListener()
         initRecyclerView()
         initAndSubscribeViewModel()
 
         val args = intent.extras
-        val coctailId = args?.getString(ID_KEY) ?: "11007" // Margarita by default
-        disposable.add(viewModel.start(coctailId))
+        val cocktailId = args?.getString(ID_KEY) ?: "11007" // Margarita by default
+        disposable.add(viewModel.start(cocktailId))
     }
 
     private fun initAndSubscribeViewModel() {
-        viewModel = ViewModelProviders.of(this).get(CoctailDetailsViewModel::class.java)
-        viewModel.getCoctailName.observe(this, Observer {
-            coctailName.text = it
+        viewModel = ViewModelProviders.of(this).get(CocktailDetailsViewModel::class.java)
+        viewModel.getCocktailName.observe(this, Observer {
+            cocktailName.text = it
         })
-        viewModel.getCoctailIngredients.observe(this, Observer {
+        viewModel.getCocktailIngredients.observe(this, Observer {
             adapter.items = it
         })
-        viewModel.getCoctailReceiptBody.observe(this, Observer {
+        viewModel.getCocktailReceiptBody.observe(this, Observer {
             receiptBody.text = it
         })
-        viewModel.getCoctailImageURL.observe(this, Observer {
+        viewModel.getCocktailImageURL.observe(this, Observer {
             Glide.with(this)
                 .load(it)
                 .transform(RoundedCorners(100))
@@ -59,13 +59,13 @@ class CoctailDetailsActivity: AppCompatActivity() {
 
     private fun initRecyclerView() {
         recyclerView.layoutManager = LinearLayoutManager(this)
-        adapter = CoctailIngredientsListAdapter()
+        adapter = CocktailIngredientsListAdapter()
         recyclerView.adapter = adapter
     }
 
     private fun setImageOnClickListener() {
         imageView.setOnClickListener {
-            val url = viewModel.getCoctailImageURL.value
+            val url = viewModel.getCocktailImageURL.value
             if (url == null) {
                 Toast.makeText(this, "", Toast.LENGTH_SHORT).show()
             } else {

@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <TextView
-        android:id="@+id/coctailName"
+        android:id="@+id/cocktailName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -23,8 +23,8 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/coctailName"
-        app:layout_constraintTop_toTopOf="@id/coctailName"
+        app:layout_constraintStart_toEndOf="@id/cocktailName"
+        app:layout_constraintTop_toTopOf="@id/cocktailName"
         app:srcCompat="@android:drawable/ic_lock_lock" />
 
     <androidx.core.widget.NestedScrollView
@@ -35,7 +35,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/coctailName">
+        app:layout_constraintTop_toBottomOf="@id/cocktailName">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -58,7 +58,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="@string/coctail_details_receipt_title"
+                android:text="@string/cocktail_details_receipt_title"
                 android:textSize="30sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"

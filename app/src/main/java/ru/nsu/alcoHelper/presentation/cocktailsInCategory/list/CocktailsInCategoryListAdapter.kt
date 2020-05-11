@@ -1,4 +1,4 @@
-package ru.nsu.alcoHelper.presentation.coctailCategories.list
+package ru.nsu.alcoHelper.presentation.cocktailsInCategory.list
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,13 +9,13 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import kotlinx.android.synthetic.main.item_coctail_compact_info.view.*
+import kotlinx.android.synthetic.main.item_cocktail_compact_info.view.*
 import ru.nsu.alcoHelper.R
 import ru.nsu.alcoHelper.common.ItemClickListener
 import ru.nsu.alcoHelper.data.model.DrinkCompactInfo
 
-class CoctailCategoryListAdapter(private val clickListener: ItemClickListener<DrinkCompactInfo>)
-    : RecyclerView.Adapter<CoctailCategoryListAdapter.ViewHolder>() {
+class CocktailsInCategoryListAdapter(private val clickListener: ItemClickListener<DrinkCompactInfo>)
+    : RecyclerView.Adapter<CocktailsInCategoryListAdapter.ViewHolder>() {
     var items: List<DrinkCompactInfo> = emptyList()
         set(value) {
             field = value
@@ -25,7 +25,7 @@ class CoctailCategoryListAdapter(private val clickListener: ItemClickListener<Dr
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(LayoutInflater
             .from(parent.context)
-            .inflate(R.layout.item_coctail_compact_info, parent, false))
+            .inflate(R.layout.item_cocktail_compact_info, parent, false))
     }
 
     override fun getItemCount() = items.size
@@ -35,8 +35,8 @@ class CoctailCategoryListAdapter(private val clickListener: ItemClickListener<Dr
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val coctailImage: AppCompatImageView = itemView.coctailImage
-        private val coctailName: TextView = itemView.coctailName
+        private val cocktailImage: AppCompatImageView = itemView.cocktailImage
+        private val cocktailName: TextView = itemView.cocktailName
         private val circularPlaceholder = CircularProgressDrawable(itemView.context)
 
         init {
@@ -50,9 +50,9 @@ class CoctailCategoryListAdapter(private val clickListener: ItemClickListener<Dr
                 .load(model.url.toString())
                 .placeholder(circularPlaceholder)
                 .transform(RoundedCorners(100))
-                .into(coctailImage)
+                .into(cocktailImage)
 
-            coctailName.text = model.name
+            cocktailName.text = model.name
 
             itemView.setOnClickListener {
                 clickListener.itemClicked(model)
