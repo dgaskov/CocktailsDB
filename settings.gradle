@@ -1,2 +1,2 @@
-rootProject.name='LoremPicsum'
+rootProject.name='AlcoHelper'
 include ':app'
