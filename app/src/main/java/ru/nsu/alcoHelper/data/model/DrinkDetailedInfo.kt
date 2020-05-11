@@ -59,7 +59,7 @@ data class DrinkDetailedInfo(
 
     // MARK: - Add those properties to *measureList*
 ) {
-    val ingredientNames: List<String> get() = listOfNotNull(
+    private val ingredientNames: List<String> get() = listOfNotNull(
         strIngredient1,
         strIngredient2,
         strIngredient3,
@@ -77,7 +77,7 @@ data class DrinkDetailedInfo(
         strIngredient15
     )
 
-    val measures: List<String> get() = listOfNotNull(
+    private val measures: List<String> get() = listOfNotNull(
         strMeasure1,
         strMeasure2,
         strMeasure3,
@@ -96,8 +96,10 @@ data class DrinkDetailedInfo(
     )
 
     val ingredients: List<Ingredient> get() {
-        return ingredientNames.mapIndexed { index, name ->
-            Ingredient(name, measures.elementAtOrElse(index) { "pinch" })
+        return ingredientNames
+            .filter { it.isNotEmpty() }
+            .mapIndexed { index, name ->
+                Ingredient(name, measures.elementAtOrElse(index) { "pinch" })
         }
     }
 }
