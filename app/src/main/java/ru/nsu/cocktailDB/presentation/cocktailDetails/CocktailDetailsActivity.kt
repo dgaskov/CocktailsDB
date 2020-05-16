@@ -1,24 +1,20 @@
 package ru.nsu.cocktailDB.presentation.cocktailDetails
 
 import android.content.Intent
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.target.CustomViewTarget
-import com.bumptech.glide.request.transition.Transition
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.activity_cocktail_details_content.*
 import kotlinx.android.synthetic.main.activity_cocktail_details_scrolling.*
 import ru.nsu.cocktailDB.R
 import ru.nsu.cocktailDB.presentation.cocktailDetails.list.CocktailIngredientsListAdapter
-import ru.nsu.cocktailDB.presentation.fullImage.FullImageActivity
+import ru.nsu.cocktailDB.presentation.fullImage.FullScreenImageActivity
 
 class CocktailDetailsActivity: AppCompatActivity() {
     private lateinit var viewModel: CocktailDetailsViewModel
@@ -78,8 +74,8 @@ class CocktailDetailsActivity: AppCompatActivity() {
                 Toast.makeText(this, "", Toast.LENGTH_SHORT).show()
             } else {
                 val bundle = Bundle()
-                bundle.putString(FullImageActivity.URL_KEY, url)
-                val intent = Intent(this, FullImageActivity::class.java)
+                bundle.putString(FullScreenImageActivity.URL_KEY, url)
+                val intent = Intent(this, FullScreenImageActivity::class.java)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }

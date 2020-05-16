@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="ru.nsu.cocktailDB.presentation.fullImage.FullImageActivity"/>
+        <activity android:name="ru.nsu.cocktailDB.presentation.fullImage.FullScreenImageActivity"/>
         <activity
             android:name="ru.nsu.cocktailDB.presentation.cocktailDetails.CocktailDetailsActivity"
             android:theme="@style/AppTheme.NoActionBar"/>

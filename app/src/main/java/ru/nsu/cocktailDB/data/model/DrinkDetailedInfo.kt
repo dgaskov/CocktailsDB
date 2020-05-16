@@ -40,6 +40,7 @@ data class DrinkDetailedInfo(
     private val strIngredient14: String?,
     private val strIngredient15: String?,
 
+    // MARK: - Add those properties to *measureList*
 
     private val strMeasure1: String?,
     private val strMeasure2: String?,
@@ -57,7 +58,6 @@ data class DrinkDetailedInfo(
     private val strMeasure14: String?,
     private val strMeasure15: String?
 
-    // MARK: - Add those properties to *measureList*
 ) {
     private val ingredientNames: List<String> get() = listOfNotNull(
         strIngredient1,
